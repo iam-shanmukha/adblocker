@@ -2,8 +2,7 @@
 import os,sys, platform
 import datetime
 hosts = ["https://adaway.org/hosts.txt",
-"https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts",
-"https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Hosts/GoodbyeAds.txt"]
+"https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"]
 count = 1
 print(r'''
 
