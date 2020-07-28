@@ -2,7 +2,8 @@
 import os,sys, platform
 import datetime
 hosts = ["https://adaway.org/hosts.txt",
-"https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"]
+"https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts",
+"https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Hosts/GoodbyeAds.txt"]
 count = 1
 print(r'''
 
@@ -43,7 +44,7 @@ elif platform.system() == 'Windows':
                 print("Backup old file Success")
                 open(r'c:\Windows\System32\Drivers\etc\hosts','w').close()
                 for i in hosts:
-                        cmd = r"curl -s {} -o c:\Windows\System32\Drivers\etc\hosts".format(i)
+                        cmd = r"curl -s {} >> c:\Windows\System32\Drivers\etc\hosts".format(i)
                         os.system(cmd)
                         print("completed {}/{}".format(count,len(hosts)))
                         count = count+1
