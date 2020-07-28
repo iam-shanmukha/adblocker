@@ -5,5 +5,5 @@ This is a simple python script which blocks ads in Linux System by adding **AdAw
 
 
 # Usage
-In Terminal, Run`git clone https://github.com/iam-shanmukha/adblocker.git` </br>
-Run `sudo python adblocker.py`
+`git clone https://github.com/iam-shanmukha/adblocker.git` </br>
+`sudo python adblocker.py`
