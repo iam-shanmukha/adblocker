@@ -16,4 +16,3 @@ try:
 except PermissionError:
 	print("Please run as root \nsudo python adblocker.py")
 	sys.exit()
-
