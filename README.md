@@ -1,7 +1,7 @@
 # Adblocker for Linux
 
-This is a simple python script which blocks ads in Linux System by adding **AdAway's** default hosts sources to /etc/hosts
-https://github.com/AdAway/AdAway/wiki/HostsSources
+This is a simple python script which blocks ads in Linux System by adding **AdAway's** default hosts sources to /etc/hosts </br>
+**HOST SOURCE:** https://github.com/AdAway/AdAway/wiki/HostsSources
 
 
 # Usage
