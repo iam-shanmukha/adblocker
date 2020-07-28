@@ -35,8 +35,8 @@ elif platform.system() == 'Windows':
         print("starting Script on Windows")
         try:
                 os.popen(r"copy c:\Windows\System32\Drivers\etc\hosts c:\Windows\System32\Drivers\etc\hosts_backup /y")
-                open(r'c:\Windows\System32\Drivers\etc\hosts','w').close()
                 print("Backup old file Success")
+                open(r'c:\Windows\System32\Drivers\etc\hosts','w').close()
                 for i in hosts:
                         cmd = r"curl -s {} -o c:\Windows\System32\Drivers\etc\hosts".format(i)
                         os.system(cmd)
