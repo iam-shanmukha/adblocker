@@ -3,6 +3,18 @@ import os,sys, platform
 hosts = ["https://adaway.org/hosts.txt",
 "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"]
 count = 1
+print(r'''
+
+           _ _     _            _                               
+  __ _  __| | |__ | | ___   ___| | _____ _ __       _ __  _   _ 
+ / _` |/ _` | '_ \| |/ _ \ / __| |/ / _ \ '__|     | '_ \| | | |
+| (_| | (_| | |_) | | (_) | (__|   <  __/ |     _  | |_) | |_| |
+ \__,_|\__,_|_.__/|_|\___/ \___|_|\_\___|_|    (_) | .__/ \__, |
+                                                   |_|    |___/ 
+
+                                        @gitub.com/iam-shanmukha
+	''')
+
 if platform.system() == 'Linux':
 	print("Starting Script on Linux")
 	try:
