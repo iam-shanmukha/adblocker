@@ -1,9 +1,5 @@
 # Adblocker
-
 This is a simple python script which blocks ads in Linux/Windows System by adding **AdAway's** default hosts sources to /etc/hosts </br>
-**HOST SOURCE:** https://github.com/AdAway/AdAway/wiki/HostsSources
-
-
 # Usage
 ## LINUX
 `git clone https://github.com/iam-shanmukha/adblocker.git` </br>
@@ -15,3 +11,7 @@ Extract Zip </br>
 open **cmd** with administrator Priviliages.</br>
 cd to extracted folder. for ex `cd C:\Users\username\Downloads\adblocker-master` </br>
 and run `python adblocker.py` 
+
+# Credits
+[ADAWAY](https://adaway.org/) </br>
+**HOSTs SOURCEs:** https://github.com/AdAway/AdAway/wiki/HostsSources
