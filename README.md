@@ -4,6 +4,9 @@ This is a simple python script which blocks ads in Linux/Windows System by addin
 ## LINUX
 `git clone https://github.com/iam-shanmukha/adblocker.git` </br>
 `sudo python adblocker.py`
+
+![Adblocker.py](https://user-images.githubusercontent.com/50124557/88746852-21fa9e80-d16b-11ea-9e41-4fcfefe9a82d.png)
+
 ## WINDOWS [Beta]
 ### Assuming you already installed Python
 `git clone https://github.com/iam-shanmukha/adblocker.git` or Download [Zip](https://github.com/iam-shanmukha/adblocker/archive/master.zip) File </br>
