@@ -18,27 +18,23 @@ print(r'''
 
 if platform.system() == 'Linux':
 	print("Starting Script on Linux")
-	try:
-		if os.geteuid() != 0:
-			print("Please run as root \nsudo python adblocker.py")
-			sys.exit()
-		basename = "hosts_"
-		suffix = datetime.datetime.now().strftime("%d%m%y_%H%M%S")
-		filename = "_".join([basename, suffix])
-		os.popen(r"sudo cp /etc/hosts /etc/{}".format(filename))
-		print("Backup success \n Backup file --> {}".format(filename))
-		open('/etc/hosts', 'w').close()
-		for i in hosts:
-			cmd = "sudo curl -s {} >> /etc/hosts".format(i)
-			#print(cmd)
-			os.system(cmd)
-			print("completed {}/{}".format(count,len(hosts)))
-			count = count+1
-		print("Successfully Blocked Ad's")
-		sys.exit()
-	except PermissionError:
+	if os.geteuid() != 0:
 		print("Please run as root \nsudo python adblocker.py")
 		sys.exit()
+	basename = "hosts_"
+	suffix = datetime.datetime.now().strftime("%d%m%y_%H%M%S")
+	filename = "_".join([basename, suffix])
+	os.system(r"sudo cp /etc/hosts /etc/{}".format(filename))
+	print("Backup success \nBackup file --> /etc/{}".format(filename))
+	open('/etc/hosts', 'w').close()
+	for i in hosts:
+		cmd = "sudo curl -s {} >> /etc/hosts".format(i)
+		#print(cmd)
+		os.system(cmd)
+		print("completed {}/{}".format(count,len(hosts)))
+		count = count+1
+	print("Successfully Blocked Ad's")
+	sys.exit()
 
 elif platform.system() == 'Windows':
         print("starting Script on Windows")
