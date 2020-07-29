@@ -16,14 +16,15 @@ print(r'''
                                         @gitub.com/iam-shanmukha
 	''')
 
+basename = "hosts_"
+suffix = datetime.datetime.now().strftime("%d%m%y_%H%M%S")
+filename = "_".join([basename, suffix])
+
 if platform.system() == 'Linux':
 	print("Starting Script on Linux")
 	if os.geteuid() != 0:
 		print("Please run as root \nsudo python adblocker.py")
 		sys.exit()
-	basename = "hosts_"
-	suffix = datetime.datetime.now().strftime("%d%m%y_%H%M%S")
-	filename = "_".join([basename, suffix])
 	os.system(r"sudo cp /etc/hosts /etc/{}".format(filename))
 	print("Backup success \nBackup file --> /etc/{}".format(filename))
 	open('/etc/hosts', 'w').close()
@@ -39,8 +40,8 @@ if platform.system() == 'Linux':
 elif platform.system() == 'Windows':
         print("starting Script on Windows")
         try:
-                os.popen(r"copy c:\Windows\System32\Drivers\etc\hosts c:\Windows\System32\Drivers\etc\hosts_backup /y")
-                print("Backup old file Success")
+                os.system(r"copy c:\Windows\System32\Drivers\etc\hosts c:\Windows\System32\Drivers\etc\{} /y".format(filename))
+                print("Backup success \nBackup file --> c:\Windows\System32\Drivers\etc\{}".format(filename))
                 open(r'c:\Windows\System32\Drivers\etc\hosts','w').close()
                 for i in hosts:
                         cmd = r"curl -s {} >> c:\Windows\System32\Drivers\etc\hosts".format(i)
