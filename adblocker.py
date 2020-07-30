@@ -61,9 +61,6 @@ elif platform.system() == 'Windows':
         except PermissionError:
                 print("Abort! Please run as Administrator")
                 sys.exit()
-        except:
-                print("Aborted!")
-                sys.exit()  
 else:
         print("Sorry! Platform Not Supported")
 
