@@ -1,8 +1,13 @@
+
+
 #!/usr/bin/python
 import os,sys, platform
 import datetime
 hosts = ["https://adaway.org/hosts.txt",
 "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"]
+
+WINDOWS_ETC = "c:\\Windows\\System32\\Drivers\\etc\\"
+WINDOWS_HOSTS = "c:\\Windows\\System32\\Drivers\\etc\\hosts"
 count = 1
 print(r'''
 
@@ -14,45 +19,51 @@ print(r'''
                                                    |_|    |___/ 
 
                                         @gitub.com/iam-shanmukha
-	''')
+    ''')
 
 basename = "hosts_"
 suffix = datetime.datetime.now().strftime("%d%m%y_%H%M%S")
 filename = "_".join([basename, suffix])
 
-if platform.system() == 'Linux':
-	print("Starting Script on Linux")
-	if os.geteuid() != 0:
-		print("Please run as root \nsudo python adblocker.py")
-		sys.exit()
-	os.system(r"sudo cp /etc/hosts /etc/{}".format(filename))
-	print("Backup success \nBackup file --> /etc/{}".format(filename))
-	open('/etc/hosts', 'w').close()
-	for i in hosts:
-		cmd = "sudo curl -s {} >> /etc/hosts".format(i)
-		#print(cmd)
-		os.system(cmd)
-		print("completed {}/{}".format(count,len(hosts)))
-		count = count+1
-	print("Successfully Blocked Ad's")
-	sys.exit()
+def execute():
+    global count
+    os.system(cmd)
+    print(f'completed {count}/{len(hosts)}')
+    count = count+1
 
+if platform.system() == 'Linux':
+        print("Starting Script on Linux")
+        try:
+                if os.geteuid() !=0:
+                    raise PermissionError
+                os.system(r"sudo cp /etc/hosts /etc/{}".format(filename))
+                print("Backup success \nBackup file --> /etc/{}".format(filename))
+                open('/etc/hosts', 'w').close()
+                for i in hosts:
+                    cmd = f'sudo curl -s {i} >> /etc/hosts'
+                    execute()
+                print("Successfully Blocked Ad's")
+                sys.exit()
+        except PermissionError:
+                print("Please run as root \nsudo python adblocker.py")
+                sys.exit()
 elif platform.system() == 'Windows':
         print("starting Script on Windows")
-        try:
-                os.system(r"copy c:\Windows\System32\Drivers\etc\hosts c:\Windows\System32\Drivers\etc\{} /y".format(filename))
-                print("Backup success \nBackup file --> c:\Windows\System32\Drivers\etc\{}".format(filename))
-                open(r'c:\Windows\System32\Drivers\etc\hosts','w').close()
+        try:    
+                os.system(f'copy {WINDOWS_HOSTS} {WINDOWS_ETC}{filename} /y')
+                print(f'Backup success \nBackup file --> {WINDOWS_ETC}{filename}')
+                open(f'{WINDOWS_HOSTS}','w').close()
                 for i in hosts:
-                        cmd = r"curl -s {} >> c:\Windows\System32\Drivers\etc\hosts".format(i)
-                        os.system(cmd)
-                        print("completed {}/{}".format(count,len(hosts)))
-                        count = count+1
+                        cmd = f'curl -s {i} >> {WINDOWS_HOSTS}'
+                        execute()
                 print("Successfully Blocked AD's")
                 sys.exit()
         except PermissionError:
                 print("Abort! Please run as Administrator")
                 sys.exit()
-                        
+        except:
+                print("Aborted!")
+                sys.exit()  
 else:
         print("Sorry! Platform Not Supported")
+
